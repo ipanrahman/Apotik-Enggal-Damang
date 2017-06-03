@@ -1,0 +1,64 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout">
+<head>
+    <title>Employee Page</title>
+</head>
+<body>
+<section layout:fragment="header">
+    <h1>Employee</h1>
+    <ol class="breadcrumb">
+        <li><a href="/"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+        <li class="active">Employee</li>
+    </ol>
+</section>
+<div layout:fragment="content">
+    <div class="box">
+        <div class="box-header with-border">
+            <h3 class="box-title">Employee</h3>
+            <div class="box-tools pull-right">
+                <a href="/employee" type="button" class="btn btn-box-tool"><i class="fa fa-list-ul"></i></a>
+            </div>
+        </div>
+        <form data-toggle="validator" role="form" th:object="${employee}" th:action="@{/employee/save}" method="post">
+            <div class="box-body">
+                <input type="hidden" th:field="*{id}"/>
+
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" required="true" class="form-control" th:field="*{name}"
+                           id="name"/>
+                </div>
+                <div class="form-group">
+                    <label for="gender">Gender</label>
+                    <select name="gender" class="form-control" id="gender" th:field="*{gender}">
+                        <option th:value="Male">Male</option>
+                        <option th:value="Female">Female</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="address">Address</label>
+                    <textarea name="address" class="form-control" id="address" th:field="*{address}"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="phoneNumber">Phone Number</label>
+                    <input type="number" required="true" class="form-control" th:field="*{phoneNumber}"
+                           id="phoneNumber"/>
+                </div>
+                <div class="form-group">
+                    <label for="email">E-mail</label>
+                    <input type="email" required="true" class="form-control" th:field="*{email}" id="email"/>
+                </div>
+                <div class="form-group">
+                    <label for="status">Status</label>
+                    <input type="text" required="true" class="form-control" th:field="*{status}" id="status"/>
+                </div>
+            </div>
+            <div class="box-footer">
+                <button type="submit" class="btn btn-primary">Save</button>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>
