@@ -35,8 +35,19 @@
                            id="lastname"/>
                 </div>
                 <div class="form-group">
+                    <label for="gender">Gender</label>
+                    <select name="gender" class="form-control" id="gender" th:field="*{gender}">
+                        <option th:value="Male">Male</option>
+                        <option th:value="Female">Female</option>
+                    </select>
+                </div>
+                <div class="form-group">
                     <label for="email">E-mail</label>
                     <input type="email" required="true" class="form-control" th:field="*{email}" id="email"/>
+                </div>
+                <div class="form-group">
+                    <label for="address">Address</label>
+                    <textarea name="address" class="form-control" id="address" th:field="*{address}"></textarea>
                 </div>
             </div>
             <div class="box-footer">

@@ -15,6 +15,10 @@ public class Member extends AbstractModel<Long> {
     private String lastname;
     @Column(nullable = false, unique = true)
     private String email;
+    @Column(name = "address",length = 100)
+    private String address;
+    @Column(name = "gender",length = 10)
+    private String gender;
 
 
     public String getFirstname() {
@@ -41,4 +45,19 @@ public class Member extends AbstractModel<Long> {
         this.email = email;
     }
 
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
 }

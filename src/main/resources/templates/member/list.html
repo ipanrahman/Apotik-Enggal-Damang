@@ -27,6 +27,8 @@
                     <th>Name</th>
                     <th>E-Mail</th>
                     <th>Created Date</th>
+                    <th>Gender</th>
+                    <th>Address</th>
                     <th>Action</th>
                 </tr>
                 <tr th:each="row : ${list}">
@@ -34,6 +36,8 @@
                     <td th:text="${row.firstname + ' ' + row.lastname}"></td>
                     <td th:text="${row.email}"></td>
                     <td th:text="${#dates.format(row.createdDate, 'dd-MM-yyyy')}"></td>
+                    <td th:text="${row.gender}"></td>
+                    <td th:text="${row.address}"></td>
                     <td>
                         <a th:href="${'/member/edit/' + row.id}">Edit</a> -
                         <a th:href="${'/member/delete/' + row.id}">Delete</a>
