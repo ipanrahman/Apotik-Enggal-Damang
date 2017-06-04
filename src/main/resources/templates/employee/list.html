@@ -1,0 +1,66 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sd="http://www.thymeleaf.org/spring-data"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="layout">
+<head>
+    <title>Employees</title>
+</head>
+<body>
+<section layout:fragment="header">
+    <h1>Employees</h1>
+    <ol class="breadcrumb">
+        <li><a href="/"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+        <li class="active">Employees</li>
+    </ol>
+</section>
+<div layout:fragment="content">
+    <div class="box">
+        <div class="box-header with-border">
+            <h3 class="box-title"></h3>
+            <div class="box-tools pull-right">
+                <a href="/employee/add" type="button" class="btn btn-box-tool"><i class="fa fa-plus"></i></a>
+                <br clear="all"/>
+            </div>
+        </div>
+        <div class="box-body no-padding">
+            <table class="table table-striped">
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Gender</th>
+                    <th>Address</th>
+                    <th>Phone Number</th>
+                    <th>E-Mail</th>
+                    <th>Status</th>
+                    <th>Created Date</th>
+                    <th>Action</th>
+                </tr>
+                <tr th:each="row : ${list}">
+                    <td th:text="${row.id}"></td>
+                    <td th:text="${row.name}"></td>
+                    <td th:text="${row.gender}"></td>
+                    <td th:text="${row.address}"></td>
+                    <td th:text="${row.phoneNumber}"></td>
+                    <td th:text="${row.email}"></td>
+                    <td th:text="${row.status}"></td>
+                    <td th:text="${#dates.format(row.createdDate, 'dd-MM-yyyy')}"></td>
+                    <td>
+                        <a th:href="${'/employee/edit/' + row.id}">Edit</a> -
+                        <a th:href="${'/employee/delete/' + row.id}">Delete</a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="box-footer clearfix">
+            <ul class="pagination pagination-sm no-margin pull-right">
+                <li><a href="/employee/1">First</a></li>
+                <li th:each="p : ${#numbers.sequence(1, endIndex/beginIndex)}"
+                    th:class="${p == currentIndex} ? 'active' : ''">
+                    <a th:href="${'/employee/' + p}" th:text="${p}"></a>
+                </li>
+                <li><a th:href="${'/employee/' + endIndex}">Last</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+</body>
+</html>
