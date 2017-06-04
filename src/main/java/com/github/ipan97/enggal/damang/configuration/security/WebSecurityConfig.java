@@ -1,4 +1,4 @@
-package com.github.ipan97.enggal.damang.security;
+package com.github.ipan97.enggal.damang.configuration.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;

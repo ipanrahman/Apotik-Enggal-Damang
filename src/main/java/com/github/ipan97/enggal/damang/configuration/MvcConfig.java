@@ -1,4 +1,4 @@
-package com.github.ipan97.enggal.damang;
+package com.github.ipan97.enggal.damang.configuration;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
